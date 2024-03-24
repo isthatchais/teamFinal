@@ -1,43 +1,67 @@
+/*body {
+  color: #000000; 
+  background-color: #FFFFFF; 
+}
+
+p, .input-group, .search-form {
+  color: #333333;
+}
+
+.login-container, .card {
+  background-color: #F8F8F8; 
+  border: 1px solid #CCCCCC; 
+}
+
+a, .btn-float { 
+  color: #0056b3;
+  background-color: #FF0000;
+}
+
+.fa-large {
+  color: #0056b3;
+}
+*/
 p {
-    margin: 10px 0 !important;
-  }
-  
-  .login-container {
-    width: 400px;
-    margin-top: 50px;
-    text-align: center;
-  }
-  
-.card{
+  margin: 10px 0 !important;
+}
+
+.login-container {
+  width: 400px;
+  margin-top: 50px;
+  text-align: center;
+}
+
+.card {
   width: 450px;
 }
 
-  .fa-small {
-    font-size: 16px !important;
-  }
-  
-  .btn-float {
-    float: left;
-    margin-right: 10px;
-  }
-  
-  .img-small {
-    width: 180px;
-  }
-  
-  .fa-large {
-    font-size: 26px !important;
-  }
-  
-  .input-group{
-    display:table;
-    width:100%;
-  }
-  .input-group .input-field,
-  .input-group .input-group-addon{
-    display:table-cell;
-  }
-  
-  .search-form {
-    margin: 70px 0;
-  }
+.fa-small {
+  font-size: 16px !important;
+}
+
+.btn-float {
+  float: left;
+  margin-right: 10px;
+}
+
+.img-small {
+  width: 180px;
+}
+
+.fa-large {
+  font-size: 26px !important;
+}
+
+.input-group {
+  display: table;
+  width: 100%;
+}
+
+.input-group .input-field,
+.input-group .input-group-addon {
+  display: table-cell;
+}
+
+.search-form {
+  margin: 70px 0;
+}
