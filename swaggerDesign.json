@@ -118,7 +118,7 @@
     },
     "/journals/{title}": {
       "get": {
-        "description": "find jounral by title",
+        "description": "find journal by title",
         "produces": [
           "application/json"
         ],
