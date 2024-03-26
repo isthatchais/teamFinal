@@ -4,9 +4,9 @@ const savePatient = (req, res, next) => {
   const validationRule = {
     firstName: ['required', 'regex:/^[A-Za-z]{2,}$'],
     lastName: ['required', 'regex:/^[A-Za-z]{3,}$'],
-    diagnosis: ['required', 'regex:/^[A-Za-z ]{3,}$'],
+    email: ['required', 'regex:/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{2,}$/'],  
     birthday: ['required', 'regex:/^[0-3]?[0-9]/[0-3]?[0-9]/(?:[0-9]{2})?[0-9]{2}$'],
-    weightBearingStatus: ['required', 'regex:/^[A-Za-z ]{3,}$'],
+    gender: ['required', 'regex:/^[A-Za-z ]{3,}$'],
     therapyOrderEndDate: ['required', 'regex:/^[0-3]?[0-9]/[0-3]?[0-9]/(?:[0-9]{2})?[0-9]{2}$'],
     lastVisit: ['required', 'regex:/^[0-3]?[0-9]/[0-3]?[0-9]/(?:[0-9]{2})?[0-9]{2}$'],
     nextVisit: ['required', 'regex:/^[0-3]?[0-9]/[0-3]?[0-9]/(?:[0-9]{2})?[0-9]{2}$'],
