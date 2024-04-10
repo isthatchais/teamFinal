@@ -8,6 +8,7 @@ const passport = require('passport')
 const session = require('express-session');
 //const MongoStore = require('connect-mongo')(session);
 const app = express();
+const port = process.env.PORT || 8080;
 
 app.use(bodyParser.json());
 
@@ -81,6 +82,9 @@ process.on('uncaughtException', (err, origin) => {
 mongodb.initDb((err) => {
   if (err) {
     console.log(err);
+  } else {
+    app.listen(port);
+    console.log(`Connected to DB and listening on ${port}`);
   } 
 });
 
@@ -91,4 +95,4 @@ mongodb.initMongoose((err) => {
 });
 
 
-module.exports = app;
+//module.exports = app;
