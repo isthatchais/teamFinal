@@ -11,7 +11,7 @@ const savePatient = (req, res, next) => {
     lastVisit: ['required', 'regex:/^[0-3]?[0-9]/[0-3]?[0-9]/(?:[0-9]{2})?[0-9]{2}$'],
     nextVisit: ['required', 'regex:/^[0-3]?[0-9]/[0-3]?[0-9]/(?:[0-9]{2})?[0-9]{2}$'],
     therapyGoals: ['required', 'regex:/^[A-Za-z ]{3,}$'],
-    assignedNurse: ['required', 'regex:/^[A-Za-z]{2,}$'],
+    assignedNurse: ['required', 'regex:/^[A-Za-z]{2,}$']
   };
   validator(req.body, validationRule, {}, (err, status) => {
     if (!status) {
@@ -25,7 +25,6 @@ const savePatient = (req, res, next) => {
     }
   });
 };
-
 
 const saveUser = (req, res, next) => {
   const validationRule = {
@@ -49,7 +48,6 @@ const saveUser = (req, res, next) => {
     }
   });
 };
-
 
 module.exports = {
   savePatient,

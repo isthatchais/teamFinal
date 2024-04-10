@@ -7,10 +7,7 @@
   },
   "host": "teamfinal-kbcd.onrender.com",
   "basePath": "/",
-  "schemes": [
-    "http",
-    "https"
-  ],
+  "schemes": ["http", "https"],
   "securityDefinitions": {
     "Google Oauth": {
       "type": "oauth2",
@@ -19,11 +16,11 @@
     }
   },
 
-    "security": [
-      {
-        "oAuthSample": ["write:pets", "read:pets"]
-      }
-    ],
+  "security": [
+    {
+      "oAuthSample": ["write:pets", "read:pets"]
+    }
+  ],
   "paths": {
     "/": {
       "get": {
@@ -48,9 +45,7 @@
     "/journals/": {
       "get": {
         "description": "get all journals",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "OK"
@@ -107,9 +102,7 @@
     "/journals/search/title/{title}": {
       "get": {
         "description": "find jounral by title",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "parameters": [
           {
             "name": "title",
@@ -131,9 +124,7 @@
     "/journals/search/{id}": {
       "get": {
         "description": "find jounrals by user id",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "parameters": [
           {
             "name": "id",
@@ -155,9 +146,7 @@
     "/journals/{id}": {
       "get": {
         "description": "find jounral by id",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "parameters": [
           {
             "name": "id",
@@ -253,9 +242,7 @@
     "/entries/": {
       "get": {
         "description": "get all entries",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "OK"
@@ -318,9 +305,7 @@
     "/entries/search/journal/{journalId}": {
       "get": {
         "description": "find the entries by journal id",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "parameters": [
           {
             "name": "journalId",
@@ -342,9 +327,7 @@
     "/entries/{id}": {
       "get": {
         "description": "find entry by id",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "parameters": [
           {
             "name": "id",
@@ -446,9 +429,7 @@
     "/moods/": {
       "get": {
         "description": "get all access moods",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "OK"
@@ -493,9 +474,7 @@
     "/moods/{id}": {
       "get": {
         "description": "get mood by id",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "parameters": [
           {
             "name": "id",
@@ -579,9 +558,7 @@
     "/users/": {
       "get": {
         "description": "get all users",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "OK"
@@ -641,9 +618,7 @@
     "/users/{id}": {
       "get": {
         "description": "find user by id",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "parameters": [
           {
             "name": "id",
@@ -750,4 +725,4 @@
       }
     }
   }
-  }
+}

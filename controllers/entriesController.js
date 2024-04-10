@@ -18,7 +18,11 @@ const getEntriesByJournalId = async (req, res) => {
     res.status(400).json('Must use a valid journal id.');
   }
   const journalId = req.params.query;
-  const result = await mongodb.getDb().db('journals').collection('entries').find({ "journalId": journalId });
+  const result = await mongodb
+    .getDb()
+    .db('journals')
+    .collection('entries')
+    .find({ journalId: journalId });
   if (result) {
     result.toArray().then((lists) => {
       res.setHeader('Content-Type', 'application/json');
@@ -31,7 +35,11 @@ const getEntriesByJournalId = async (req, res) => {
 
 const getEntriesByDate = async (req, res) => {
   const entryDate = req.params.query;
-  const result = await mongodb.getDb().db('journals').collection('entries').find({ 'entryDate': entryDate });
+  const result = await mongodb
+    .getDb()
+    .db('journals')
+    .collection('entries')
+    .find({ entryDate: entryDate });
   if (result) {
     result.toArray().then((lists) => {
       res.setHeader('Content-Type', 'application/json');
@@ -60,10 +68,9 @@ const getOneEntry = async (req, res) => {
 
 const addEntry = async (req, res) => {
   const entry = {
-
-//   Here are the fields we considered earlier.
-//   Since we already have 7 within the users Object, it may make sense to use fewer here. 
-// -Ian 
+    //   Here are the fields we considered earlier.
+    //   Since we already have 7 within the users Object, it may make sense to use fewer here.
+    // -Ian
 
     journalId: req.body.journalId,
     title: req.body.title,
@@ -73,8 +80,6 @@ const addEntry = async (req, res) => {
     createdAt: req.body.createdAt,
     updatedAt: req.body.updatedAt,
     entryDate: req.body.entryDate
-
-    
   };
   const response = await mongodb.getDb().db('journals').collection('entries').insertOne(entry);
   if (response.acknowledged) {
@@ -98,7 +103,6 @@ const updateEntry = async (req, res) => {
     createdAt: req.body.createdAt,
     updatedAt: req.body.updatedAt,
     entryDate: req.body.entryDate
-
   };
   const response = await mongodb
     .getDb()
@@ -131,4 +135,12 @@ const deleteEntry = async (req, res) => {
   }
 };
 
-module.exports = { getAllEntries, getOneEntry, addEntry, updateEntry, deleteEntry, getEntriesByJournalId, getEntriesByDate };
+module.exports = {
+  getAllEntries,
+  getOneEntry,
+  addEntry,
+  updateEntry,
+  deleteEntry,
+  getEntriesByJournalId,
+  getEntriesByDate
+};

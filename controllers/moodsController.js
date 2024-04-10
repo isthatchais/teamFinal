@@ -26,7 +26,6 @@ const getAllMoods = async (req, res) => {
 //   }
 // };
 
-
 // const getJournalByUser = async (req, res) => {
 //   if (!ObjectId.isValid(req.params.query)) {
 //     res.status(400).json('Must use a valid user id.');
@@ -42,7 +41,6 @@ const getAllMoods = async (req, res) => {
 //     res.status(400).json(result.error || 'Error occurred while retrieving journals.');
 //   }
 // };
-
 
 // const getOneJournal = async (req, res) => {
 //   if (!ObjectId.isValid(req.params.id)) {
@@ -62,10 +60,8 @@ const getAllMoods = async (req, res) => {
 
 const addMood = async (req, res) => {
   const mood = {
-
     moodName: req.body.moodName,
     moodIcon: req.body.moodIcon
-    
   };
   const response = await mongodb.getDb().db().collection('moods').insertOne(mood);
   if (response.acknowledged) {
@@ -84,11 +80,7 @@ const updateMood = async (req, res) => {
     moodName: req.body.moodName,
     moodIcon: req.body.moodIcon
   };
-  const response = await mongodb
-    .getDb()
-    .db()
-    .collection('moods')
-    .replaceOne({ _id: moodId }, mood);
+  const response = await mongodb.getDb().db().collection('moods').replaceOne({ _id: moodId }, mood);
   console.log(response);
   if (response.modifiedCount > 0) {
     res.status(204).send();
@@ -102,11 +94,7 @@ const deleteMood = async (req, res) => {
     res.status(400).json('Must use a valid moodId.');
   }
   const moodId = new ObjectId(req.params.id);
-  const response = await mongodb
-    .getDb()
-    .db()
-    .collection('moods')
-    .deleteOne({ _id: moodId }, true);
+  const response = await mongodb.getDb().db().collection('moods').deleteOne({ _id: moodId }, true);
   console.log(response);
   if (response.deletedCount > 0) {
     res.status(200).send();
@@ -115,4 +103,4 @@ const deleteMood = async (req, res) => {
   }
 };
 
-module.exports = { getAllMoods,addMood, updateMood, deleteMood};
+module.exports = { getAllMoods, addMood, updateMood, deleteMood };

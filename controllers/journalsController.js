@@ -15,7 +15,11 @@ const getAllJournals = async (req, res) => {
 
 const getJournalByTitle = async (req, res) => {
   const journalTitle = req.params.query;
-  const result = await mongodb.getDb().db('journals').collection('journals').find({ "journalTitle": journalTitle });
+  const result = await mongodb
+    .getDb()
+    .db('journals')
+    .collection('journals')
+    .find({ journalTitle: journalTitle });
   if (result) {
     result.toArray().then((lists) => {
       res.setHeader('Content-Type', 'application/json');
@@ -26,13 +30,16 @@ const getJournalByTitle = async (req, res) => {
   }
 };
 
-
 const getJournalByUser = async (req, res) => {
   if (!ObjectId.isValid(req.params.query)) {
     res.status(400).json('Must use a valid user id.');
   }
   const userId = req.params.query;
-  const result = await mongodb.getDb().db('journals').collection('journals').find({ "createdUserId": userId });
+  const result = await mongodb
+    .getDb()
+    .db('journals')
+    .collection('journals')
+    .find({ createdUserId: userId });
   if (result) {
     result.toArray().then((lists) => {
       res.setHeader('Content-Type', 'application/json');
@@ -43,13 +50,16 @@ const getJournalByUser = async (req, res) => {
   }
 };
 
-
 const getOneJournal = async (req, res) => {
   if (!ObjectId.isValid(req.params.id)) {
     res.status(400).json('Must use a valid journal id.');
   }
   const journalId = new ObjectId(req.params.id);
-  const result = await mongodb.getDb().db('journals').collection('journals').find({ _id: journalId });
+  const result = await mongodb
+    .getDb()
+    .db('journals')
+    .collection('journals')
+    .find({ _id: journalId });
   if (result) {
     result.toArray().then((lists) => {
       res.setHeader('Content-Type', 'application/json');
@@ -62,7 +72,6 @@ const getOneJournal = async (req, res) => {
 
 const addJournal = async (req, res) => {
   const journal = {
-
     //I've added in the four fields for journals here
     //If I remember correctly we were going to have
     //the entry object have the 7 fields we need
@@ -74,7 +83,6 @@ const addJournal = async (req, res) => {
     createdAt: req.body.createdAt,
     updatedAt: req.body.updatedAt,
     entries: []
-    
   };
   const response = await mongodb.getDb().db('journals').collection('journals').insertOne(journal);
   if (response.acknowledged) {
@@ -128,4 +136,12 @@ const deleteJournal = async (req, res) => {
   }
 };
 
-module.exports = { getAllJournals, getOneJournal, addJournal, updateJournal, deleteJournal, getJournalByTitle, getJournalByUser };
+module.exports = {
+  getAllJournals,
+  getOneJournal,
+  addJournal,
+  updateJournal,
+  deleteJournal,
+  getJournalByTitle,
+  getJournalByUser
+};

@@ -3,13 +3,13 @@ const router = express.Router();
 
 const validation = require('../middleware/validate');
 
-const usersController = require('../controllers/usersController')
+const usersController = require('../controllers/usersController');
 
 router.get('/', usersController.getAllUsers);
 
 //router.get('/search/:query',  usersController.getUserByName);
 
-router.get('/:id',  usersController.getOneUser);
+router.get('/:id', usersController.getOneUser);
 
 router.post('/', validation.saveUser, usersController.addUser);
 

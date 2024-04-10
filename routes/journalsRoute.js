@@ -3,7 +3,7 @@ const router = express.Router();
 
 const validation = require('../middleware/validate');
 
-const journalsController = require('../controllers/journalsController')
+const journalsController = require('../controllers/journalsController');
 
 router.get('/', journalsController.getAllJournals);
 

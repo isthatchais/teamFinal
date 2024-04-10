@@ -3,7 +3,7 @@ const router = express.Router();
 
 const validation = require('../middleware/validate');
 
-const entriesController = require('../controllers/entriesController')
+const entriesController = require('../controllers/entriesController');
 
 router.get('/', entriesController.getAllEntries);
 
