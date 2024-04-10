@@ -6,7 +6,7 @@ const exphbs = require('express-handlebars');
 const mongodb = require('./db/connect');
 const passport = require('passport')
 const session = require('express-session');
-const MongoStore = require('connect-mongo')(session);
+//const MongoStore = require('connect-mongo')(session);
 const app = express();
 
 app.use(bodyParser.json());
@@ -57,7 +57,7 @@ app.use(session({
     secret: 'keyboard cat',
     resave: false,
     saveUninitialized: false,
-    store: new MongoStore({process.env.MONGODB_URI})
+    //store: new MongoStore({process.env.MONGODB_URI})
 }));
 
 
