@@ -339,30 +339,6 @@
         }
       }
     },
-      "/entries/search/dateCreated/{date}": {
-        "get": {
-          "description": "find entry by date",
-          "produces": [
-            "application/json"
-          ],
-          "parameters": [
-            {
-              "name": "date",
-              "in": "path",
-              "required": true,
-              "type": "string"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "OK"
-            },
-            "400": {
-              "description": "Bad Request"
-            }
-          }
-        }
-      },
     "/entries/{id}": {
       "get": {
         "description": "find entry by id",
@@ -658,30 +634,6 @@
           },
           "500": {
             "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/users/search/{name}": {
-      "get": {
-        "description": "find user by name",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "name",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
           }
         }
       }
