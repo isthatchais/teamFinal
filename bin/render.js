@@ -1,10 +1,14 @@
 var app = require('../app');
-var http = require('http');
+const mongodb = require('../db/connect');
 
-const port = (process.env.PORT || '8080');
+const port = process.env.PORT || 8080
 app.set('port', port);
 
-var server = http.createServer(app);
-
-server.listen(port);
-console.log('Listening on port' + port)
+mongodb.initDb((err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      app.listen(port);
+      console.log(`Connected to DB and listening on ${port}`);
+    }
+  });
