@@ -42,21 +42,21 @@ const getAllMoods = async (req, res) => {
 //   }
 // };
 
-// const getOneJournal = async (req, res) => {
-//   if (!ObjectId.isValid(req.params.id)) {
-//     res.status(400).json('Must use a valid journal id.');
-//   }
-//   const journalId = new ObjectId(req.params.id);
-//   const result = await mongodb.getDb().db().collection('journals').find({ _id: journalId });
-//   if (result) {
-//     result.toArray().then((lists) => {
-//       res.setHeader('Content-Type', 'application/json');
-//       res.status(200).json(lists[0]);
-//     });
-//   } else {
-//     res.status(400).json(result.error || 'Error occurred while retrieving journal.');
-//   }
-// };
+const getOneMood = async (req, res) => {
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json('Must use a valid mood id.');
+  }
+  const moodId = new ObjectId(req.params.id);
+  const result = await mongodb.getDb().db().collection('moods').find({ _id: moodId });
+  if (result) {
+    result.toArray().then((lists) => {
+      res.setHeader('Content-Type', 'application/json');
+      res.status(200).json(lists[0]);
+    });
+  } else {
+    res.status(400).json(result.error || 'Error occurred while retrieving mood.');
+  }
+};
 
 const addMood = async (req, res) => {
   const mood = {
@@ -103,4 +103,4 @@ const deleteMood = async (req, res) => {
   }
 };
 
-module.exports = { getAllMoods, addMood, updateMood, deleteMood };
+module.exports = { getAllMoods,getOneMood, addMood, updateMood, deleteMood };
