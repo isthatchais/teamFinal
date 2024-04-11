@@ -47,7 +47,7 @@ const getOneMood = async (req, res) => {
     res.status(400).json('Must use a valid mood id.');
   }
   const moodId = new ObjectId(req.params.id);
-  const result = await mongodb.getDb().db().collection('moods').find({ _id: moodId });
+  const result = await mongodb.getDb().db('journals').collection('moods').find({ _id: moodId });
   if (result) {
     result.toArray().then((lists) => {
       res.setHeader('Content-Type', 'application/json');

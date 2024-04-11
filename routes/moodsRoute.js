@@ -7,7 +7,7 @@ const moodsController = require('../controllers/moodsController');
 
 router.get('/', moodsController.getAllMoods);
 
-router.get('/', moodsController.getOneMood);
+router.get('/:id', moodsController.getOneMood);
 
 router.post('/', moodsController.addMood);
 
