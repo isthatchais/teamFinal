@@ -1,17 +1,16 @@
 const validator = require('../helpers/validate');
 
-const savePatient = (req, res, next) => {
+
+
+const getUser = (req, res, next) => {
   const validationRule = {
+    googleId: 'string',
     firstName: ['required', 'regex:/^[A-Za-z]{2,}$'],
     lastName: ['required', 'regex:/^[A-Za-z]{3,}$'],
-    diagnosis: ['required', 'regex:/^[A-Za-z ]{3,}$'],
-    birthday: ['required', 'regex:/^[0-3]?[0-9]/[0-3]?[0-9]/(?:[0-9]{2})?[0-9]{2}$'],
-    weightBearingStatus: ['required', 'regex:/^[A-Za-z ]{3,}$'],
-    therapyOrderEndDate: ['required', 'regex:/^[0-3]?[0-9]/[0-3]?[0-9]/(?:[0-9]{2})?[0-9]{2}$'],
-    lastVisit: ['required', 'regex:/^[0-3]?[0-9]/[0-3]?[0-9]/(?:[0-9]{2})?[0-9]{2}$'],
-    nextVisit: ['required', 'regex:/^[0-3]?[0-9]/[0-3]?[0-9]/(?:[0-9]{2})?[0-9]{2}$'],
-    therapyGoals: ['required', 'regex:/^[A-Za-z ]{3,}$'],
-    assignedNurse: ['required', 'regex:/^[A-Za-z]{2,}$']
+    displayName: ['required', 'regex:/^[A-Za-z ]{5,}$'],
+    image: 'string',
+    createdAt: 'string',
+    assignedJournals: []
   };
   validator(req.body, validationRule, {}, (err, status) => {
     if (!status) {
@@ -25,6 +24,7 @@ const savePatient = (req, res, next) => {
     }
   });
 };
+
 
 const saveUser = (req, res, next) => {
   const validationRule = {
@@ -49,7 +49,239 @@ const saveUser = (req, res, next) => {
   });
 };
 
+
+const updateUser = (req, res, next) => {
+  const validationRule = {
+    googleId: 'string',
+    firstName: ['required', 'regex:/^[A-Za-z]{2,}$'],
+    lastName: ['required', 'regex:/^[A-Za-z]{3,}$'],
+    displayName: ['required', 'regex:/^[A-Za-z ]{5,}$'],
+    image: 'string',
+    createdAt: 'string',
+    assignedJournals: []
+  };
+  validator(req.body, validationRule, {}, (err, status) => {
+    if (!status) {
+      res.status(412).send({
+        success: false,
+        message: 'Validation failed',
+        data: err
+      });
+    } else {
+      next();
+    }
+  });
+};
+
+
+const getEntry =(req, res, next) => {
+  const validationRule = {
+    journalId: 'string',
+    title: ['required'],
+    content: ['required'],
+    mood: 'string',
+    tags: 'string',
+    createdAt: ['required'],
+    updatedAt: ['required'],
+  };
+  validator(req.body, validationRule, {}, (err, status) =>{
+    if (!status) {
+      res.status(412).send({
+        success: false,
+        message: 'Validation failed',
+        data: err
+      });
+    } else {
+      next();
+    }
+  });
+};
+
+
+const saveEntry =(req, res, next) => {
+  const validationRule = {
+    journalId: 'string',
+    title: ['required'],
+    content: ['required'],
+    mood: 'string',
+    tags: 'string',
+    createdAt: ['required'],
+    updatedAt: ['required'],
+  };
+  validator(req.body, validationRule, {}, (err, status) =>{
+    if (!status) {
+      res.status(412).send({
+        success: false,
+        message: 'Validation failed',
+        data: err
+      });
+    } else {
+      next();
+    }
+  });
+};
+
+const updateEntry =(req, res, next) => {
+  const validationRule = {
+    journalId: 'string',
+    title: ['required'],
+    content: ['required'],
+    mood: 'string',
+    tags: 'string',
+    createdAt: ['required'],
+    updatedAt: ['required'],
+  };
+  validator(req.body, validationRule, {}, (err, status) =>{
+    if (!status) {
+      res.status(412).send({
+        success: false,
+        message: 'Validation failed',
+        data: err
+      });
+    } else {
+      next();
+    }
+  });
+};
+
+const getJournal =(req, res, next) => {
+  const validationRule = {
+    journalTitle: ['required'],
+    theme: 'string',
+    createdUserId: 'string',
+    createdAt: ['required'],
+    updatedAt: ['required'],
+    entries:'string'
+  };
+  validator(req.body, validationRule, {}, (err, status) =>{
+    if (!status) {
+      res.status(412).send({
+        success: false,
+        message: 'Validation failed',
+        data: err
+      });
+    } else {
+      next();
+    }
+  });
+};
+
+const saveJournal =(req, res, next) => {
+  const validationRule = {
+    journalTitle: ['required'],
+    theme: 'string',
+    createdUserId: 'string',
+    createdAt: ['required'],
+    updatedAt: ['required'],
+    entries:'string'
+  };
+  validator(req.body, validationRule, {}, (err, status) =>{
+    if (!status) {
+      res.status(412).send({
+        success: false,
+        message: 'Validation failed',
+        data: err
+      });
+    } else {
+      next();
+    }
+  });
+};
+
+const updateJournal =(req, res, next) => {
+  const validationRule = {
+    journalTitle: ['required'],
+    theme: 'string',
+    createdUserId: 'string',
+    createdAt: ['required'],
+    updatedAt: ['required'],
+    entries:'string'
+  };
+  validator(req.body, validationRule, {}, (err, status) =>{
+    if (!status) {
+      res.status(412).send({
+        success: false,
+        message: 'Validation failed',
+        data: err
+      });
+    } else {
+      next();
+    }
+  });
+};
+
+
+const getMood =(req, res, next) => {
+  const validationRule = {
+    moodName: ['required'],
+    moodIcon: 'string'
+  };
+  validator(req.body, validationRule, {}, (err, status) =>{
+    if (!status) {
+      res.status(412).send({
+        success: false,
+        message: 'Validation failed',
+        data: err
+      });
+    } else {
+      next();
+    }
+  });
+};
+
+
+const saveMood =(req, res, next) => {
+  const validationRule = {
+    moodName: ['required'],
+    moodIcon: 'string'
+  };
+  validator(req.body, validationRule, {}, (err, status) =>{
+    if (!status) {
+      res.status(412).send({
+        success: false,
+        message: 'Validation failed',
+        data: err
+      });
+    } else {
+      next();
+    }
+  });
+};
+
+const updateMood =(req, res, next) => {
+  const validationRule = {
+    moodName: ['required'],
+    moodIcon: 'string'
+  };
+  validator(req.body, validationRule, {}, (err, status) =>{
+    if (!status) {
+      res.status(412).send({
+        success: false,
+        message: 'Validation failed',
+        data: err
+      });
+    } else {
+      next();
+    }
+  });
+};
+
+
 module.exports = {
   savePatient,
-  saveUser
+  getUser,
+  saveUser,
+  updateUser,
+  getEntry,
+  saveEntry,
+  updateEntry,
+  getJournal,
+  saveJournal,
+  updateJournal,
+  getMood,
+  saveMood,
+  updateMood,
+  
 };
+
+
