@@ -268,7 +268,7 @@ const updateMood =(req, res, next) => {
 
 
 module.exports = {
-  savePatient,
+
   getUser,
   saveUser,
   updateUser,
